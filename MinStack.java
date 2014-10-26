@@ -1,12 +1,21 @@
-package main;
+package algorithm;
 
 import java.util.Stack;
 
-import util.MinFunc;
+//用于求最小值的抽象泛型类
+abstract class MinFunc<E> {
+	public abstract E min(E e1, E e2);
+}
 
-
-//O(1)求最小值的栈
+/*
+ desc: O(1)求最小值的栈
+*/
 public class M21_MinStack<E> extends Stack<E>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4315954595548770897L;
+	
 	//构造函数
 	public M21_MinStack(MinFunc<E> minFunc) {
 		super();
@@ -18,7 +27,7 @@ public class M21_MinStack<E> extends Stack<E>{
 	private Stack<E> minStack;
 	private MinFunc<E> minFunc;
 	
-	//主要函数
+	@Override
 	public E push(E e) {
 		super.push(e);
 		if(minStack.isEmpty()) {
@@ -28,13 +37,16 @@ public class M21_MinStack<E> extends Stack<E>{
 		}
 		return e;
 	}
+	@Override
 	public E pop() {
 		minStack.pop();
 		return super.pop();
 	}
+	
 	public E min() {
 		return minStack.peek();
 	}
+	
 	//return null with empty case
 	public E popSafe() {
 		if(isEmpty()) {
