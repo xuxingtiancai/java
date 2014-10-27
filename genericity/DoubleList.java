@@ -27,7 +27,7 @@ class ListNode<T extends Comparable<? super T>> implements Comparable<ListNode<T
 }
 
 //from LRU cache
-class DoubleList<T extends Comparable<T>> {
+class DoubleList<T extends Comparable<? super T>> {
 	ListNode<T> head;
 	ListNode<T> tail;
     
